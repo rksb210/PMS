@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
+
   const [companyName, setCompanyName] = useState("");
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
@@ -10,15 +13,18 @@ const RegistrationForm = () => {
   const [label, setLabel] = useState("");
 
   const handleSubmit = async () => {
-    const body = {companyname:companyName,
-                companyemailid:emailId,
-            password:password,
-        phonenumber:phoneNumber,
-    location:location,
-label:label}
-    const response = await axios.post("http://localhost:3000/signup",body);
+    const body = {
+      companyname: companyName,
+      companyemailid: emailId,
+      password: password,
+      phonenumber: phoneNumber,
+      location: location,
+      label: label,
+    };
+    const response = await axios.post("http://localhost:3000/signup", body);
     console.log("reg:", response.msg);
-    alert("mera toh ho gya registration",response.msg);
+    // alert("mera toh ho gya registration",response.msg);
+    navigate("/");
   };
 
   return (

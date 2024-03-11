@@ -9,6 +9,8 @@ app.use(express.json());
 
 app.use(require("./routes/pricing"));
 app.use(require("./routes/registration"));
+app.use(require("./routes/login"));
+
 
 app.listen(3000, () => {
   //listening on port 5000
