@@ -19,20 +19,22 @@ export default function BillingForm() {
         <div>
           <h1>Payment Form</h1>
           <div>
-            <h3>Plan: {response.amount}</h3>
+            <h3>Plan: {response.response.amount}</h3>
           </div>
           <div>
-            <h3>Number Of Users: {response.no_of_users}</h3>
+            <h3>Number Of Users: {response.response.number_of_users}</h3>
           </div>
           <div>
-            <h3>Number Of months: {response.no_of_months}</h3>
+            <h3>Number Of months: {response.response.no_of_months}</h3>
           </div>
         </div>
 
         <div style={{ margin: "px" }}>
           <div style={{ fontSize: "40px" }}>
             Total bill :
-            {response.amount * response.no_of_months * response.no_of_users}
+            {response.response.amount *
+              response.response.no_of_months *
+              response.response.number_of_users}
           </div>
           <div style={{ margin: "10px" }}>
             <button>Buy now </button>

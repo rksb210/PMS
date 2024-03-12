@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-// require('./models/index')
+require('./models/index')
+// const registration = require('./models/registrationModel')
+// registration.sync({force:true})
 
 app.use(cors());
 app.use(express.json());

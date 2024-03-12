@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function GoldPage() {
   const navigate = useNavigate();
-  
+
   const handlePricing = async (event) => {
     event.preventDefault();
     const response = await axios.get("http://localhost:3000/gold");
-    // console.log("res", response);
+    console.log("res", response);
     console.log(response.data.data);
-    navigate("/billing", { state: { response: response.data.data } });
+    navigate("/signup", { state: { response: response.data.data } });
+    // navigate("/signup");
   };
   return (
     <>

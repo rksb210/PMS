@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
+  const locationNav = useLocation();
 
   const [companyName, setCompanyName] = useState("");
   const [emailId, setEmailId] = useState("");
@@ -14,18 +16,31 @@ const RegistrationForm = () => {
 
   const handleSubmit = async () => {
     const body = {
-      companyname: companyName,
+      companyname: companyName.toLocaleLowerCase(),
       companyemailid: emailId,
       password: password,
       phonenumber: phoneNumber,
       location: location,
       label: label,
     };
-    const response = await axios.post("http://localhost:3000/signup", body);
-    console.log("reg:", response.msg);
+
+    const response = locationNav?.state;
+    console.log("uuu:", response);
+
+    // alert(companyName.toLocaleLowerCase())
+    const response1 = await axios.post("http://localhost:3000/signup", body);
+    console.log("reg:", response1.data.msg);
     // alert("mera toh ho gya registration",response.msg);
-    navigate("/");
+    // console.log("first:", response1.response.amount);
+    if (response.response.amount === 0) {
+      navigate("/login");
+    } else {
+      navigate("/billing", { state: { response: response } });
+    }
   };
+
+  // const response = locationNav?.state.response.amount;
+  // console.log("uuu:", response);
 
   return (
     <div>

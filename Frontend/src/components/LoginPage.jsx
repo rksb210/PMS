@@ -10,6 +10,7 @@ const LoginPage = () => {
     const response = await axios.post("http://localhost:3000/login", body);
     console.log("first:", response.data.message);
     alert(response.data.message);
+    
   };
 
   return (

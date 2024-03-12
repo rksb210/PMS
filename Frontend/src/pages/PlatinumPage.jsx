@@ -8,7 +8,7 @@ export default function PlatinumPage() {
     const response = await axios.get("http://localhost:3000/platinum");
     // console.log("res", response);
     console.log(response.data.data);
-    navigate("/billing", { state: { response: response.data.data } });
+    navigate("/signup", { state: { response: response.data.data } });
   };
   return (
     <>

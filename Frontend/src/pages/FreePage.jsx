@@ -6,9 +6,10 @@ export default function FreePage() {
   const handlePricing = async (event) => {
     event.preventDefault();
     const response = await axios.get("http://localhost:3000/free");
-    // console.log("res", response);
-    console.log("tttt", response.data.data);
-    navigate("/billing", { state: { response: response.data.data } });
+    console.log("res", response);
+    // console.log("tttt", response.data.data);
+    // navigate("/signup", { state: { response: response.data.data } });
+    navigate('/signup', { state: { response: response.data.data } })
   };
   return (
     <>
@@ -19,9 +20,9 @@ export default function FreePage() {
         <div>
           <button onClick={handlePricing}>start for free</button>
         </div>
-        <div> Projects : 0</div>
-        <div> Storage : 0</div>
-        <div> Number of Users : 0</div>
+        <div> Projects : 3</div>
+        <div> Storage : 10 GB</div>
+        <div> Number of Users : 5</div>
       </div>
     </>
   );
