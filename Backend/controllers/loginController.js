@@ -11,7 +11,7 @@ const logindata = async (req, res) => {
     },
     
   },
-  {raw:true}); /////////////to remove extra information
+  {raw:true});         /////////////to remove extra information
   
   console.log("logggginnn:", login);
   console.log("logggginLen:", login.length);

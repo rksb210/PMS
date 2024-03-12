@@ -31,6 +31,10 @@ const Pricing = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    plan: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
 
   },
   {

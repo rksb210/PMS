@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           isLowercase: true,
-          len:[3,10]
+          len:[3,30]
         },
       },
       companyemailid: {
@@ -33,11 +33,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       phonenumber: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          isNumeric: true,
-        },
+        // validate: {
+        //   isNumeric: true,
+        // },
       },
       location: {
         type: DataTypes.STRING,
