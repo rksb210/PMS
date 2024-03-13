@@ -10,18 +10,24 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const response = location?.state;
-  console.log("location", response.response.amount);
+  // console.log("location", response.response.amount);
 
   const onFinish = async (values) => {
-    const response1 = await axios.post("http://localhost:3000/signup", values);
-    console.log("reg:", response1.data.msg);
+    const result = await axios.post("http://localhost:3000/signup", values);
+    // console.log("result:",response1)
+    // console.log("reg:", result.data.status);
     // alert("mera toh ho gya registration", response.msg);
-    console.log(values);
+    // console.log(values);
+    if(result.data.status){
+          alert(result.data.msg)
+    }
+    else{
     if (response.response.amount === 0) {
       navigate("/login");
     } else {
       navigate("/billing", { state: { response: response } });
     }
+  }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -74,13 +80,14 @@ const RegistrationForm = () => {
           marginTop: "100px",
           backgroundColor: "#F2F4F4",
           borderRadius: "20px",
+          
         }}
       >
         <h2
           style={{
             marginBottom: "10px",
             textAlign: "center",
-            fontFamily: "fantasy",
+            fontFamily: 'sans-serif',
             color: "#76D7C4",
             padding: "10px",
           }}
@@ -203,6 +210,27 @@ const RegistrationForm = () => {
           </Form.Item>
 
           <Form.Item
+            name="location"
+            label="Location"
+            rules={[
+              {
+                required: true,
+                message: "Please select Location!",
+              },
+            ]}
+          >
+            <Select
+              placeholder="select your Location"
+              id="location"
+              //  value={location}
+              //  onChange={(e)=> setLocation(e.target.value)}
+            >
+              <Option value="India">India</Option>
+              <Option value="Foreign">Foreign</Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item
             name="label"
             label="Label"
             rules={[
@@ -224,26 +252,7 @@ const RegistrationForm = () => {
             </Select>
           </Form.Item>
 
-          <Form.Item
-            name="location"
-            label="Location"
-            rules={[
-              {
-                required: true,
-                message: "Please select Location!",
-              },
-            ]}
-          >
-            <Select
-              placeholder="select your Location"
-              id="location"
-              //  value={location}
-              //  onChange={(e)=> setLocation(e.target.value)}
-            >
-              <Option value="India">India</Option>
-              <Option value="Foreign">Foreign</Option>
-            </Select>
-          </Form.Item>
+          
 
           <Form.Item
             wrapperCol={{
