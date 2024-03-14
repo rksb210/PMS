@@ -1,7 +1,12 @@
 const express = require("express");
 const router = express.Router();
 // var pool = require("./pool");
-const { addSuperAdmin } = require("../controllers/registrationController");
+const {
+  addSuperAdmin,
+  getClientDetails,
+  deleteClientDetails,
+  editClientDetails,
+} = require("../controllers/registrationController");
 
 // router.post("/signup", (req, res) => {
 //   console.log("ttt:", req.body);
@@ -27,6 +32,9 @@ const { addSuperAdmin } = require("../controllers/registrationController");
 //   );
 // });
 
-router.post('/signup',addSuperAdmin)
+router.post("/signup", addSuperAdmin);
+router.get("/signup", getClientDetails);
+router.delete("/signup/:id", deleteClientDetails);
+router.patch("/signup/:id", editClientDetails);
 
 module.exports = router;

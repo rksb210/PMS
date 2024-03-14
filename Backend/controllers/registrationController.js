@@ -1,4 +1,5 @@
 const db = require("../models/index");
+const { get } = require("../routes/registration");
 const Registration = db.registration;
 
 const addSuperAdmin = async (req, res) => {
@@ -9,14 +10,18 @@ const addSuperAdmin = async (req, res) => {
       companyemailid: companyemailid,
     },
   });
-  console.log("check:",check_email.length)
-  if (check_email.length>=1) {
-    res.json({ msg: "Email Id already exist" ,status:true,data:[]});
+  console.log("check:", check_email.length);
+  if (check_email.length >= 1) {
+    res.json({ msg: "Email Id already exist", status: true, data: [] });
   } else {
     const registration = await Registration.create(req.body);
     res
       .status(200)
-      .json({ msg: "Registration Successfull", data: registration ,status:false});
+      .json({
+        msg: "Registration Successfull",
+        data: registration,
+        status: false,
+      });
   }
 };
 
@@ -24,4 +29,35 @@ const addSuperAdmin = async (req, res) => {
 // res.status(200).json({msg:'Registration Successfull',data:registration})
 // }
 
-module.exports = { addSuperAdmin };
+const getClientDetails = async (req, res) => {
+  const getData = await Registration.findAll({});
+  console.log("getData:", getData);
+  res.json({ message: "Success", status: true, data: getData });
+};
+
+const deleteClientDetails = async (req, res) => {
+  const id = req.params.id;
+  const deleteData = await Registration.destroy({
+    where: {
+      registration_id: id,
+    },
+  });
+  res.json({ message: "Success", status: true, data: deleteData });
+};
+
+const editClientDetails = async (req, res) => {
+  const id = req.params.id;
+  const editData = await Registration.update(req.body, {
+    where: {
+      registration_id: id,
+    },
+  });
+  res.json({ message: "Edit Data Successfully", status: true, data: editData });
+};
+
+module.exports = {
+  addSuperAdmin,
+  getClientDetails,
+  deleteClientDetails,
+  editClientDetails,
+};
