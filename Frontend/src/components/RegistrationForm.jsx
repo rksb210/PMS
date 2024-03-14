@@ -2,8 +2,9 @@
 import { Button, Form, Input, Select } from "antd";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-const { Option } = Select;
 import Swal from "sweetalert2";
+
+const { Option } = Select;
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
@@ -16,6 +17,10 @@ const RegistrationForm = () => {
     if (e.target.value.length > 15) {
       e.preventDefault();
     }
+  }
+  
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
   };
 
   const onFinish = async (values) => {
@@ -40,13 +45,12 @@ const RegistrationForm = () => {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+
 
   const handlelogin = () => {
     navigate("/login");
   };
+
 
   return (
     <div
@@ -117,7 +121,11 @@ const RegistrationForm = () => {
               },
             ]}
           >
-            <Input id="companyname" placeholder="Enter your company name" />
+            <Input
+              id="companyname"
+              // value={companyName}
+              // onChange={(e)=> setCompanyName(e.target.value)}
+            />
           </Form.Item>
 
           <Form.Item
@@ -134,7 +142,11 @@ const RegistrationForm = () => {
               },
             ]}
           >
-            <Input id="emailid" placeholder="Enter your email id" />
+            <Input
+              id="emailid"
+              // value={emailId}
+              // onChange={(e)=> setEmailId(e.target.value)}
+            />
           </Form.Item>
 
           <Form.Item
@@ -156,7 +168,11 @@ const RegistrationForm = () => {
               },
             ]}
           >
-            <Input.Password id="password" placeholder="Enter password" />
+            <Input.Password
+              id="password"
+              // value={password}
+              // onChange={(e)=> setPassword(e.target.value)}
+            />
           </Form.Item>
 
           <Form.Item
@@ -167,7 +183,6 @@ const RegistrationForm = () => {
                 required: true,
                 message: "Please input your phone number!",
               },
-
               {
                 pattern: /^[+]{1}(?:[0-9\-\\(\\)\\/.]\s?){6,15}[0-9]{1}$/,
                 message: "invalid Phone number",
@@ -176,12 +191,14 @@ const RegistrationForm = () => {
           >
             <Input
               id="phone"
-              placeholder="Enter your phone number"
+              // value={phoneNumber}
+              // onChange={(e)=> setPhoneNumber(e.target.value)}
               onKeyDown={handleKeyDown}
               maxLength={15}
               type="tel"
             />
           </Form.Item>
+
           <Form.Item
             name="location"
             label="Location"
@@ -192,11 +209,17 @@ const RegistrationForm = () => {
               },
             ]}
           >
-            <Select placeholder="Select your Location" id="location">
+            <Select
+              placeholder="select your Location"
+              id="location"
+              //  value={location}
+              //  onChange={(e)=> setLocation(e.target.value)}
+            >
               <Option value="India">India</Option>
               <Option value="Foreign">Foreign</Option>
             </Select>
           </Form.Item>
+
           <Form.Item
             name="label"
             label="Label"
@@ -207,50 +230,39 @@ const RegistrationForm = () => {
               },
             ]}
           >
-            <Select placeholder="Select your label" id="label">
+            <Select
+              placeholder="select your label"
+              id="label"
+              //  value={label}
+              //  onChange={(e)=> setLabel(e.target.value)}
+            >
               <Option value="L1">L1(Zone,Circle,Division)</Option>
               <Option value="L2">L2(State,District,City)</Option>
               <Option value="L3">L3(Country,County,District)</Option>
             </Select>
           </Form.Item>
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <Button
-                style={{
-                  backgroundColor: "#3498DB",
-                  color: "white",
-                  width: "200px",
-                }}
-                htmlType="submit"
-              >
-                {" "}
-                Sign Up
-              </Button>
-            </div>
-            <div>
-              <span>
-                Already have an account?
-                <Button
-                  type="secondary"
-                  style={{ color: "#2E86C1" }}
-                  onClick={handlelogin}
-                >
-                  Login
-                </Button>
-              </span>
-            </div>
-          </div>
+          
+
+
+<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                        <div>
+                            <Button style={{ backgroundColor: '#3498DB', color: 'white', width: '200px' }} htmlType="submit">
+                                {" "}
+                                Sign Up
+                            </Button>
+                        </div>
+                        <div>
+                            <span>Already have an account?
+                                <Button type='secondary' style={{ color: '#2E86C1' }} onClick={handlelogin}>Login</Button>
+                            </span>
+                        </div>
+                    </div>
         </Form>
       </div>
     </div>
   );
-};
+          }
+
 export default RegistrationForm;
+
