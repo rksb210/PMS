@@ -18,6 +18,7 @@ db.sequelize = sequelize;
 
 db.registration = require("./registrationModel")(sequelize, DataTypes);
 db.pricing = require("./pricingModel")(sequelize, DataTypes);
+db.billing = require("./billingModel")(sequelize, DataTypes);
 
 
 db.sequelize.sync();

@@ -2,33 +2,33 @@ var db = require("../models/index");
 var Registration = db.registration;
 
 const logindata = async (req, res) => {
-  console.log("reqqqq:", req.body);
-  const { loginemailid, loginpassword } = req.body;
+  // console.log("reqqqq:", req.body);
+  const { companyemailid, password } = req.body;
   const login = await Registration.findAll({
     where: {
-      companyemailid: loginemailid,
-      password: loginpassword,
+      companyemailid: companyemailid,
+      password: password,
     },
     
   },
   {raw:true});         /////////////to remove extra information
   
-  console.log("logggginnn:", login);
-  console.log("logggginLen:", login.length);
-  if (login) {
-    if (login.length==1) {
+  // console.log("logggginnn:", login);
+  // console.log("logggginLen:", login.length);
+  
+    if (login.length===1) {
       res
         .status(200)
         .json({ message: "Success", status: true, data: login[0] });
     } else {
-      res.status(200).json({
-        message: "Invalid EmailId/Username/ Password",
+      res.json({
+        message: "Invalid Login Credentials",
         status: false,
       });
     }
-  } else {
-    res.status(200).json({ message: "Database Error", status: false });
-  }
+  // } else {
+  //   res.status(200).json({ message: "Database Error", status: false });
+  // }
 
   // if (login) {
   //   res.status(200).json({ message: "Success", status: true, data: login });

@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(require("./routes/pricing"));
 app.use(require("./routes/registration"));
 app.use(require("./routes/login"));
+app.use(require("./routes/billing"));
 
 
 app.listen(3000, () => {

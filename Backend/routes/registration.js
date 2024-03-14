@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-var pool = require("./pool");
+// var pool = require("./pool");
 const { addSuperAdmin } = require("../controllers/registrationController");
 
 // router.post("/signup", (req, res) => {

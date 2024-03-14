@@ -1,38 +1,64 @@
 // import React from 'react';
-
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Form, Input } from 'antd';
-// import Password from 'antd/es/input/Password';
+import Swal from 'sweetalert2';
+
 
 
 
 const LoginPage = () => {
 
+  const navigate = useNavigate();
 
 const onFinish = async(values) => {
-  const response = await axios.post("http://localhost:3000/login", values);
+  try {
+    const result = await axios.post("http://localhost:3000/login", values);
+    console.log("rrrrr:",result)
+    // alert(result.message)
+    if(!result.data.status){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${result.data.message}`,
+      });
+    }
+    else{
+      navigate('/pricing')
+    }
   console.log('Success:', values);
-  console.log('SuccessResponse:', response);
+  } catch (error) {
+    console.log("error while calling the login api", error) 
+  }
+  
 };
+
+
+
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
+
+const handleSignup = ()=>{
+  navigate('/signup')
+}
   
 
   return(
-    <div style={{display:'flex', justifyContent:'center'}}>
+    <div style={{display:'flex', justifyContent:'center',backgroundColor:'#EAEDED', height:'100vh'}}>
     <div
     style={{display:'flex', flexDirection:'column', alignItems:"center",
     justifyContent:"center",
     marginTop : '100px',
-    backgroundColor : '#F2F4F4',
+    backgroundColor : '#FDFEFE',
     borderRadius:'20px',
+    height:'50%',
     width:'40%'}}>
-       <h2 style={{marginBottom:'10px', textAlign:"center", fontFamily:'fantasy', color:'#76D7C4',padding:'10px'}}>Login Form</h2>
+       <h2 style={{marginBottom:'10px', textAlign:"center", fontFamily:'monospace',padding:'10px'}}>Login Form</h2>
   <Form
     name="basic"
     labelCol={{
-      span: 8,
+      span: 6,
     }}
     wrapperCol={{
       span: 16,
@@ -50,7 +76,7 @@ const onFinishFailed = (errorInfo) => {
   >
     <Form.Item
       label="EmailId"
-      name="email"
+      name="companyemailid"
       rules={[
         {
           required: true,
@@ -64,6 +90,7 @@ const onFinishFailed = (errorInfo) => {
     >
       <Input
       id="emailid"
+      placeholder='Enter your registered email id'
       />
     </Form.Item>
 
@@ -85,22 +112,26 @@ const onFinishFailed = (errorInfo) => {
       }
       ]}
     >
-      <Input.Password/>
+      <Input.Password
+      placeholder='Enter your password'/>
     </Form.Item>
-
-    <Form.Item
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-      <Button style={{width:'150px', marginLeft:'60px'}} type="primary" htmlType="submit">
+     <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+      <div>
+      <Button style={{ backgroundColor:'#3498DB', color:'white', width:'150px'}}   htmlType="submit">
         Login
       </Button>
-    </Form.Item>
+      </div>
+   
+    <div >
+      <span>Do not have an Account?
+      <Button type='secondary' style={{ color: '#2E86C1'}}  onClick={handleSignup}>Sign Up</Button>
+      </span>
+    </div>
+    </div>
   </Form>
   </div>
   </div>
+
   );
 };
 export default LoginPage;
