@@ -9,6 +9,7 @@ const Pricing = sequelize.define(
         allowNull: false,
         primaryKey: true, 
         autoIncrement: true,
+        // values:[0,1,2]
       },
     amount: {
       type: DataTypes.INTEGER,

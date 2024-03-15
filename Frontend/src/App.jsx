@@ -8,7 +8,8 @@ import BillingForm from './components/BillingForm';
 import PricingPage from './components/PricingPage';
 import RegistrationForm from './components/RegistrationForm';
 import LoginPage from './components/LoginPage';
-import DisplayAllClientDetails from './components/DisplayAllClientDetails';
+import ClientsDetails from './components/ClientsDetails';
+// import DisplayAllClientDetails from './components/DisplayAllClientDetails';
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
       <Route element={<LoginPage />} path='login'/>
        <Route element={<PricingPage />} path='pricing'/>
         <Route element={<BillingForm />} path='billing'/>
-        <Route element={<DisplayAllClientDetails />} path='displayclients'/>
+        {/* <Route element={<DisplayAllClientDetails />} path='displayclients'/> */}
+        <Route element={<ClientsDetails />} path='clientsdetails'/>
+
       </Routes>
       </Router>
     </>

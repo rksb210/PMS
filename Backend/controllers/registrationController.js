@@ -47,11 +47,14 @@ const deleteClientDetails = async (req, res) => {
 
 const editClientDetails = async (req, res) => {
   const id = req.params.id;
+  console.log("req.body",req.body)
+  console.log("first,",id)
   const editData = await Registration.update(req.body, {
     where: {
       registration_id: id,
     },
   });
+  console.log("editData:",editData)
   res.json({ message: "Edit Data Successfully", status: true, data: editData });
 };
 
