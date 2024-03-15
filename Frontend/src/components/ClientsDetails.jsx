@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 const { Search } = Input;
-import Flip from 'react-reveal/Flip';
+import Flip from "react-reveal/Flip";
 
 function ClientsDetails() {
   const [searchedText, setSearchedText] = useState("");
@@ -30,7 +30,10 @@ function ClientsDetails() {
   // Function to update client details
   const updateClient = async (editingClient) => {
     try {
-      const response = await axios.patch(`http://localhost:3000/signup/${editingClient.registration_id}`, editingClient);
+      const response = await axios.patch(
+        `http://localhost:3000/signup/${editingClient.registration_id}`,
+        editingClient
+      );
       if (response.status === 200) {
         Swal.fire("Success", "Client details updated successfully", "success");
         fetchAll(); // Refetch data after successful update
@@ -65,8 +68,12 @@ function ClientsDetails() {
       filteredValue: [searchedText],
       onFilter: (value, record) => {
         return (
-          String(record.companyname).toLowerCase().includes(value.toLowerCase()) ||
-          String(record.companyemailid).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.companyname)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          String(record.companyemailid)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
           String(record.location).toLowerCase().includes(value.toLowerCase())
         );
       },
@@ -87,8 +94,14 @@ function ClientsDetails() {
       render: (record) => {
         return (
           <>
-            <EditFilled onClick={() => onEditClient(record)} style={{ color: "green", marginLeft: 12 }} />
-            <DeleteFilled onClick={() => onDeleteClient(record)} style={{ color: "red", marginLeft: 12 }} />
+            <EditFilled
+              onClick={() => onEditClient(record)}
+              style={{ color: "green", marginLeft: 12 }}
+            />
+            <DeleteFilled
+              onClick={() => onDeleteClient(record)}
+              style={{ color: "red", marginLeft: 12 }}
+            />
           </>
         );
       },
@@ -97,39 +110,39 @@ function ClientsDetails() {
 
   // Function to handle deletion of client
   const onDeleteClient = (record) => {
-        console.log("rowdata", record);
-        Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
-        })
-          .then(async (result) => {
-            if (result.isConfirmed) {
-              result = await axios.delete(
-                `http://localhost:3000/signup/${record.registration_id}`
-              );
-              if (result.status) {
-                Swal.fire("Deleted!", "Job has been deleted.", "success");
-                fetchAll();
-              } else {
-                Swal.fire("Deleted!", "Fail to delete job", "error");
-              }
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
+    console.log("rowdata", record);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          result = await axios.delete(
+            `http://localhost:3000/signup/${record.registration_id}`
+          );
+          if (result.status) {
+            Swal.fire("Deleted!", "Job has been deleted.", "success");
+            fetchAll();
+          } else {
+            Swal.fire("Deleted!", "Fail to delete job", "error");
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const navigate = useNavigate();
 
   // Function to navigate to add client page
   const onAddClient = () => {
-    navigate('/pricing');
+    navigate("/pricing");
   };
 
   return (
@@ -144,33 +157,67 @@ function ClientsDetails() {
         flexWrap: "wrap",
       }}
     >
-      <h2 style={{ textAlign: "center", fontFamily: "monospace", padding: "10px" }}>Clients Details</h2>
-      <Search
-        placeholder="input search text"
-        enterButton="Search"
-        size="large"
-        onSearch={(value) => setSearchedText(value)}
-        onChange={(e) => setSearchedText(e.target.value)}
-        style={{ width: "400px", marginTop: "30px", marginLeft: "600px", marginBottom: "10px" }}
-      />
+      <h2
+        style={{
+          textAlign: "center",
+          fontFamily: "monospace",
+          padding: "10px",
+        }}
+      >
+        Clients Details
+      </h2>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        <Button
+          style={{
+            marginTop: "20px",
+            backgroundColor: "#3498DB",
+            color: "white",
+            width: "200px",
+          }}
+          onClick={onAddClient}
+        >
+          Add Client
+        </Button>
+        <Search
+          placeholder="input search text"
+          enterButton
+          size="large"
+          onSearch={(value) => setSearchedText(value)}
+          onChange={(e) => setSearchedText(e.target.value)}
+          style={{
+            width: "400px",
+            marginTop: "30px",
+            marginLeft: "300px",
+            marginBottom: "10px",
+          }}
+        />
+      </div>
       <Flip>
         <div
           style={{
-            width: "70%",
+            width: "60%",
             height: "70%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "#FDFEFE",
-            borderRadius: "20px",
           }}
         >
           <Table
-            style={{ width: "90%", height: "100%" }}
+            style={{ width: "100%", height: "100%" }}
             columns={columns}
             dataSource={dataSource}
             pagination={{ pageSize: 7 }}
+            bordered
             rowKey="registration_id"
           />
           <Modal
@@ -186,27 +233,36 @@ function ClientsDetails() {
             <Input
               value={editingClient?.companyname}
               style={{ marginBottom: "20px", height: "40px" }}
-              onChange={(e) => setEditingClient({ ...editingClient, companyname: e.target.value })}
+              onChange={(e) =>
+                setEditingClient({
+                  ...editingClient,
+                  companyname: e.target.value,
+                })
+              }
             />
             <Input
               value={editingClient?.companyemailid}
               style={{ marginBottom: "20px", height: "40px" }}
-              onChange={(e) => setEditingClient({ ...editingClient, companyemailid: e.target.value })}
+              onChange={(e) =>
+                setEditingClient({
+                  ...editingClient,
+                  companyemailid: e.target.value,
+                })
+              }
             />
             <Input
               value={editingClient?.location}
               style={{ marginBottom: "20px", height: "40px" }}
-              onChange={(e) => setEditingClient({ ...editingClient, location: e.target.value })}
+              onChange={(e) =>
+                setEditingClient({
+                  ...editingClient,
+                  location: e.target.value,
+                })
+              }
             />
           </Modal>
         </div>
       </Flip>
-      <Button
-        style={{ marginTop: "20px", backgroundColor: "#3498DB", color: "white", width: "200px" }}
-        onClick={onAddClient}
-      >
-        Add Client
-      </Button>
     </div>
   );
 }

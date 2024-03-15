@@ -2,7 +2,7 @@ const db = require("../models/index");
 const { get } = require("../routes/registration");
 const Registration = db.registration;
 
-const addSuperAdmin = async (req, res) => {
+const addClient = async (req, res) => {
   console.log("req.body:", req.body);
   const { companyemailid } = req.body;
   const check_email = await Registration.findAll({
@@ -59,7 +59,7 @@ const editClientDetails = async (req, res) => {
 };
 
 module.exports = {
-  addSuperAdmin,
+  addClient,
   getClientDetails,
   deleteClientDetails,
   editClientDetails,

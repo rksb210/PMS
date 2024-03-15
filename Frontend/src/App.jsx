@@ -9,6 +9,8 @@ import PricingPage from './components/PricingPage';
 import RegistrationForm from './components/RegistrationForm';
 import LoginPage from './components/LoginPage';
 import ClientsDetails from './components/ClientsDetails';
+import SuperAdminRegistration from './components/SuperAdminRegistration';
+import SuperAdminLogin from './components/SuperAdminLogin';
 // import DisplayAllClientDetails from './components/DisplayAllClientDetails';
 
 function App() {
@@ -22,7 +24,8 @@ function App() {
         <Route element={<BillingForm />} path='billing'/>
         {/* <Route element={<DisplayAllClientDetails />} path='displayclients'/> */}
         <Route element={<ClientsDetails />} path='clientsdetails'/>
-
+        <Route element = {<SuperAdminRegistration/>} path='superadminsignup'/>
+        <Route element = {<SuperAdminLogin/>} path='superadminlogin'/>
       </Routes>
       </Router>
     </>

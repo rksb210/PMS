@@ -6,6 +6,7 @@ const {
   getClientDetails,
   deleteClientDetails,
   editClientDetails,
+  addClient,
 } = require("../controllers/registrationController");
 
 // router.post("/signup", (req, res) => {
@@ -32,7 +33,7 @@ const {
 //   );
 // });
 
-router.post("/signup", addSuperAdmin);
+router.post("/signup", addClient);
 router.get("/signup", getClientDetails);
 router.delete("/signup/:id", deleteClientDetails);
 router.patch("/signup/:id", editClientDetails);
