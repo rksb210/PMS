@@ -3,14 +3,14 @@ const { get } = require("../routes/registration");
 const Registration = db.registration;
 
 const addClient = async (req, res) => {
-  console.log("req.body:", req.body);
+  // console.log("req.body:", req.body);
   const { companyemailid } = req.body;
   const check_email = await Registration.findAll({
     where: {
       companyemailid: companyemailid,
     },
   });
-  console.log("check:", check_email.length);
+  // console.log("check:", check_email.length);
   if (check_email.length >= 1) {
     res.json({ msg: "Email Id already exist", status: true, data: [] });
   } else {
@@ -31,7 +31,7 @@ const addClient = async (req, res) => {
 
 const getClientDetails = async (req, res) => {
   const getData = await Registration.findAll({});
-  console.log("getData:", getData);
+  // console.log("getData:", getData);
   res.json({ message: "Success", status: true, data: getData });
 };
 
@@ -47,14 +47,14 @@ const deleteClientDetails = async (req, res) => {
 
 const editClientDetails = async (req, res) => {
   const id = req.params.id;
-  console.log("req.body",req.body)
-  console.log("first,",id)
+  // console.log("req.body",req.body)
+  // console.log("first,",id)
   const editData = await Registration.update(req.body, {
     where: {
       registration_id: id,
     },
   });
-  console.log("editData:",editData)
+  // console.log("editData:",editData)
   res.json({ message: "Edit Data Successfully", status: true, data: editData });
 };
 

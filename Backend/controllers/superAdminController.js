@@ -2,14 +2,14 @@ const db = require("../models/index");
 const SuperAdmin = db.superadmin
 
 const addSuperAdmin = async (req, res) => {
-    console.log("req.body:", req.body);
+    // console.log("req.body:", req.body);
     const { email } = req.body;
     const check_email = await SuperAdmin.findAll({
       where: {
         email: email,
       },
     });
-    console.log("check:", check_email.length);
+    // console.log("check:", check_email.length);
     if (check_email.length >= 1) {
       res.json({ msg: "Email Id already exist", status: true, data: [] });
     } else {
