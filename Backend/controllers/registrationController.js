@@ -29,7 +29,7 @@ const addClient = async (req, res) => {
 // res.status(200).json({msg:'Registration Successfull',data:registration})
 // }
 
-const getClientDetails = async (req, res) => {
+const getAllClientDetails = async (req, res) => {
   const getData = await Registration.findAll({});
   // console.log("getData:", getData);
   res.json({ message: "Success", status: true, data: getData });
@@ -60,7 +60,7 @@ const editClientDetails = async (req, res) => {
 
 module.exports = {
   addClient,
-  getClientDetails,
+  getAllClientDetails,
   deleteClientDetails,
   editClientDetails,
 };

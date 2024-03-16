@@ -15,7 +15,9 @@ app.use(require("./routes/registration"));
 app.use(require("./routes/login"));
 app.use(require("./routes/billing"));
 app.use(require("./routes/superadmin"));
-app.use(require("./routes/licenceDetails"));
+app.use(require("./routes/licenseDetails"));
+app.use(require("./routes/clientDetails"));
+
 
 app.listen(3000, () => {
 	//listening on port 5000

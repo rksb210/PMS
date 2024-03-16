@@ -24,7 +24,7 @@ function App() {
 					<Route element={<PricingPage />} path="pricing" />
 					<Route element={<BillingForm />} path="billing" />
 					{/* <Route element={<DisplayAllClientDetails />} path='displayclients'/> */}
-					<Route element={<ClientsDetails />} path="clientsdetails" />
+					<Route element={<ClientsDetails />} path="displayallclients" />
 					<Route element={<SuperAdminRegistration />} path="superadminsignup" />
 					<Route element={<SuperAdminLogin />} path="superadminlogin" />
 					<Route element={<Licensing />} path="licensing" />

@@ -16,7 +16,7 @@ const getLicenceDetails = async (req, res) => {
       ],
       raw: true,
     });
-    // console.log("dataaaaa:", data);
+    console.log("dataaaaa:", data);
 
     // Extracting plan, numberofmonths, createdAt, and expiration date from each data object
     const licenseDetails = data.map((item) => {
@@ -28,7 +28,7 @@ const getLicenceDetails = async (req, res) => {
         'Registration.companyemailid':companyemailid,
         'Registration.phonenumber':phonenumber,
       } = item;
-      // console.log("itemkdjfaskdghsiudhsjkd", item);
+      console.log("itemkdjfaskdghsiudhsjkd", item);
       const expirationDate = calculateExpirationDate(createdAt, numberofmonths);
       return {
         plan: plan,
