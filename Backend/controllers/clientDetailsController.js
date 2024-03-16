@@ -53,7 +53,7 @@ const getClientDetails = async (req, res) => {
         };
       });
       // console.log("liscense details", licenseDetails);
-      res.json(licenseDetails );
+      res.json(licenseDetails[0] );
     } catch (error) {
       res.status(500).json({ message: "Error retrieving license details" });
     }
