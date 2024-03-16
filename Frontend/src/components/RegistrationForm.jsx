@@ -26,6 +26,8 @@ const RegistrationForm = () => {
   const onFinish = async (values) => {
     try {
       const result = await axios.post("http://localhost:3000/signup", values);
+      // console.log('aaajaaree:',result.data.data.registration_id)
+      const registration_id = result.data.data.registration_id
 
       if (result.data.status) {
         Swal.fire({
@@ -37,7 +39,7 @@ const RegistrationForm = () => {
         if (response?.response?.amount === 0) {
           navigate("/login");
         } else {
-          navigate("/billing", { state: { response: response } });
+          navigate("/billing", { state: { response: response,registration_id:registration_id } });
         }
       }
     } catch (error) {

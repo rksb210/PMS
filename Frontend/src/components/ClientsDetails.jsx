@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 const { Search } = Input;
-import Flip from "react-reveal/Flip";
 
 function ClientsDetails() {
   const [searchedText, setSearchedText] = useState("");
@@ -200,7 +199,7 @@ function ClientsDetails() {
           }}
         />
       </div>
-      <Flip>
+      
         <div
           style={{
             width: "60%",
@@ -262,7 +261,7 @@ function ClientsDetails() {
             />
           </Modal>
         </div>
-      </Flip>
+      
     </div>
   );
 }
