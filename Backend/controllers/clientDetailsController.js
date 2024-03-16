@@ -35,6 +35,7 @@ const getClientDetails = async (req, res) => {
           companyname,
           companyemailid,
           phonenumber,
+          registration_id
         } = item;
         console.log("itemkdjfaskdghsiudhsjkd", item);
         const expirationDate = calculateExpirationDate(createdAt, numberofmonths);
@@ -46,12 +47,13 @@ const getClientDetails = async (req, res) => {
           phonenumber: phonenumber,
           numberofusers:numberofusers,
           numberofmonths: numberofmonths,
+          registration_id:registration_id,
           createdAt: formatDate(createdAt),
           expirationDate: formatDate(expirationDate),
         };
       });
       // console.log("liscense details", licenseDetails);
-      res.json({ data:licenseDetails, message: "Success" });
+      res.json(licenseDetails );
     } catch (error) {
       res.status(500).json({ message: "Error retrieving license details" });
     }
