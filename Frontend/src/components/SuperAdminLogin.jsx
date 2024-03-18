@@ -23,7 +23,7 @@ const onFinish = async(values) => {
   });
   }
   else{
-    navigate('/clientsdetails')
+    navigate('/displayallclients')
   }
   } catch (error) {
     console.log("error while calling the superadmin login api", error) 

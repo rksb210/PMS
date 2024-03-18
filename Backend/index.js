@@ -17,6 +17,8 @@ app.use(require("./routes/billing"));
 app.use(require("./routes/superadmin"));
 app.use(require("./routes/licenseDetails"));
 app.use(require("./routes/clientDetails"));
+app.use(require("./routes/clientDashboard"));
+
 
 
 app.listen(3000, () => {

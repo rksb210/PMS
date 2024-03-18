@@ -26,7 +26,7 @@ db.pricing = require("./pricingModel")(sequelize, DataTypes);
 db.billing = require("./billingModel")(sequelize, DataTypes);
 db.superadmin = require("./superAdminRegistrationModel")(sequelize, DataTypes);
 
-db.registration.hasOne(db.billing, { foreignKey: "registration_id" });
+db.registration.hasMany(db.billing, { foreignKey: "registration_id" });
 db.billing.belongsTo(db.registration, { foreignKey: "registration_id" });
 
 db.sequelize.sync({ force: false });
