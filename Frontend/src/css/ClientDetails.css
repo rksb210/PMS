@@ -1,3 +1,18 @@
-.client-details-modal .bold-text {
-  font-weight: bold;
+.client-details-modal {
+  table {
+    border-collapse: collapse;
+    width: 96%;
+  }
+
+  th,
+  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+  }
+
+  .bold-text {
+    font-weight: bold;
+  }
+
 }

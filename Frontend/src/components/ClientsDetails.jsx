@@ -24,9 +24,9 @@ function ClientsDetails() {
 			const clientDetails = await axios.get(
 				`http://localhost:3000/clientdetails/${id}`,
 			);
-			// console.log(clientDetails);
-			setIsModalOpen(true);
+			console.log(clientDetails);
 			setClientData(clientDetails.data);
+			setIsModalOpen(true);
 		} catch (error) {
 			console.log(error);
 		}
@@ -294,39 +294,66 @@ function ClientsDetails() {
 					// onOk={handleOk
 					onCancel={() => setIsModalOpen(false)}
 					footer={""}
+					width={700}
+					centered
 					className="client-details-modal"
 				>
-					<p>
-						<span className="bold-text">Company Name: </span>{" "}
-						{clientData.companyname}
-					</p>
-					<p>
-						<span className="bold-text">Company Email: </span>{" "}
-						{clientData.companyemailid}
-					</p>
-					<p>
-						<span className="bold-text">Plan: </span> {clientData.plan}
-					</p>
-					<p>
-						<span className="bold-text">Plan Amount: </span>
-						{clientData.planamount}
-					</p>
-					<p>
-						<span className="bold-text">No. of Users: </span>
-						{clientData.numberofusers}
-					</p>
-					<p>
-						<span className="bold-text">No. of Months: </span>
-						{clientData.numberofmonths}
-					</p>
-					<p>
-						<span className="bold-text">Start Date: </span>
-						{clientData.createdAt}
-					</p>
-					<p>
-						<span className="bold-text">End Date: </span>
-						{clientData.expirationDate}
-					</p>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span class="bold-text">Company Name:</span>
+								</td>
+								<td>{clientData.companyname}</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold-text">Company Email:</span>
+								</td>
+								<td>{clientData.companyemailid}</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold-text">Plan:</span>
+								</td>
+								<td>{clientData.plan ? clientData.plan : "FREE"}</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold-text">Plan Amount:</span>
+								</td>
+								<td>{clientData.planamount ? clientData.planamount : 0}</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold-text">No. of Users:</span>
+								</td>
+								<td>
+									{clientData.numberofusers ? clientData.numberofusers : 5}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold-text">No. of Months:</span>
+								</td>
+								<td>
+									{clientData.numberofmonths ? clientData.numberofmonths : 1}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold-text">Start Date:</span>
+								</td>
+								<td>{clientData.createdAt}</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold-text">End Date:</span>
+								</td>
+								<td>{clientData.expirationDate}</td>
+							</tr>
+						</tbody>
+					</table>
 				</Modal>
 			</div>
 		</div>

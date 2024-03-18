@@ -1,0 +1,46 @@
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-container .max-width-container {
+  display: flex;
+  max-width: 1400px;
+  position: relative;
+  right: 100px;
+}
+
+
+.dashboard-container .column-1 {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+.dashboard-container .column-1 .heading {
+  margin-bottom: 50px;
+}
+
+.dashboard-container .column-1 .heading h1 {
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+
+.dashboard-container .column-2 {
+  position: absolute;
+  z-index: -1;
+  left: 200px;
+}
+
+/* .dashboard-container .column-2 img {
+  margin-left: 150px;
+} */
+
+.dashboard-container .column-1 .dash-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
