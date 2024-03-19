@@ -21,6 +21,8 @@ app.use(require("./routes/licenseDetails"));
 app.use(require("./routes/clientDetails"));
 app.use(require("./routes/clientDashboard"));
 app.use(require("./routes/totalClients"));
+app.use(require("./routes/previousPlan"));
+
 
 
 app.use(errorHandlerMiddleware);

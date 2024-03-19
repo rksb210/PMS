@@ -2,7 +2,7 @@ const db = require("../models/index");
 const Billing = db.billing;
 const Registration = db.registration;
 
-const getClientDetails = async (req, res) => {
+const getPreviousPlan = async (req, res) => {
 	// const {id} =req.params
 	// console.log("first",id)
 	try {
@@ -66,10 +66,10 @@ const getClientDetails = async (req, res) => {
 		// data.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
         // console.log("uuu:",data);
 
-        // licenseDetails.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
+        licenseDetails.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
 
 
-		console.log("liscense details", licenseDetails[0]);
+		console.log("liscense details", licenseDetails);
 		res.json(licenseDetails);
 	} catch (error) {
 		res.status(500).json({ message: "Error retrieving license details" });
@@ -95,4 +95,4 @@ const formatDate = (date) => {
 
 
 
-module.exports = { getClientDetails };
+module.exports = { getPreviousPlan };
