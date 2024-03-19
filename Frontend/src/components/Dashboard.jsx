@@ -25,7 +25,7 @@ function Dashboard() {
 	return (
 		<>
 			{!isSubscribed && <RenewPlan />}
-			<h1>Client Dashboard</h1>
+			<h1 style={{ textAlign: "center" }}>Client Dashboard</h1>
 		</>
 	);
 }

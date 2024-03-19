@@ -1,0 +1,28 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #dddddd;
+
+  .client-details-modal {
+    width: 50%;
+
+    table .bold-text {
+      font-weight: bold;
+    }
+
+    .client-details-table th,
+td {
+  border: 1px solid gray;
+  text-align: left;
+  padding: 10px;
+}
+
+    .client-details-table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+  }
+}

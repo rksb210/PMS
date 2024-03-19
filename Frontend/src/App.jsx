@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom"; //imp
 import BillingForm from "./components/BillingForm";
 import ClientsDetails from "./components/ClientsDetails";
 import Dashboard from "./components/Dashboard";
+import DetailsTable from "./components/DetailsTable";
 import Licensing from "./components/Licensing";
 import LoginPage from "./components/LoginPage";
 import PricingPage from "./components/PricingPage";
@@ -27,6 +28,10 @@ function App() {
 					<Route element={<Licensing />} path="licensing" />
 					<Route element={<Dashboard />} path="clientdashboard" />
 					<Route element={<RenewPlan />} path="renewplan" />
+					<Route
+						element={<DetailsTable />}
+						path="displayallclients/:clientId"
+					/>
 				</Routes>
 			</Router>
 		</>
