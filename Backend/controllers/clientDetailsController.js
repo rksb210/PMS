@@ -63,8 +63,14 @@ const getClientDetails = async (req, res) => {
 				expirationDate: formatDate(expirationDate),
 			};
 		});
+		// data.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
+        // console.log("uuu:",data);
+
+        licenseDetails.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
+
+
 		console.log("liscense details", licenseDetails);
-		res.json(licenseDetails[0]);
+		res.json(licenseDetails);
 	} catch (error) {
 		res.status(500).json({ message: "Error retrieving license details" });
 	}

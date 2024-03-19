@@ -7,4 +7,6 @@ const addBilling = async (req,res) => {
     res.json({message:'Bill add Successful',status:true,data:billing})
 }
 
-module.exports = {addBilling}
+
+
+module.exports = {addBilling }
