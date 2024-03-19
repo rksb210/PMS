@@ -1,13 +1,14 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 const sequelize = new Sequelize(
-	"pms",
+	"intileo_pms",
 	process.env.SQLUSER,
 	process.env.SQLPASSWORD,
 	{
-		host: "localhost",
+		host: process.env.SQLHOST,
 		dialect: "mysql",
 		logging: false,
+		port: process.env.SQLPORT,
 	},
 );
 
