@@ -33,16 +33,16 @@ const getClientDetails = async (req, res) => {
 			],
 			raw: true,
 		});
-		//   console.log("dataaaaa:", data);
+		  console.log("dataaaaa:", data);
 
 		// Extracting plan, numberofmonths, createdAt, and expiration date from each data object
 		const licenseDetails = data.map((item) => {
 			const {
-				"Billing.plan": plan,
-				"Billing.numberofusers": numberofusers,
-				"Billing.createdAt": createdAt,
-				"Billing.planamount": planamount,
-				"Billing.numberofmonths": numberofmonths,
+				'Billings.plan': plan,
+				'Billings.numberofusers': numberofusers,
+				'Billings.createdAt': createdAt,
+				'Billings.planamount': planamount,
+				'Billings.numberofmonths': numberofmonths,
 				companyname,
 				companyemailid,
 				phonenumber,
@@ -63,7 +63,7 @@ const getClientDetails = async (req, res) => {
 				expirationDate: formatDate(expirationDate),
 			};
 		});
-		// console.log("liscense details", licenseDetails);
+		console.log("liscense details", licenseDetails);
 		res.json(licenseDetails[0]);
 	} catch (error) {
 		res.status(500).json({ message: "Error retrieving license details" });
