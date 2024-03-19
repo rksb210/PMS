@@ -1,7 +1,9 @@
 require("dotenv").config();
+require("express-async-errors");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const errorHandlerMiddleware = require("./middleware/errorHandler");
 
 require("./models/index");
 // const registration = require('./models/registrationModel')
@@ -19,9 +21,15 @@ app.use(require("./routes/licenseDetails"));
 app.use(require("./routes/clientDetails"));
 app.use(require("./routes/clientDashboard"));
 
+app.use(errorHandlerMiddleware);
 
-
-app.listen(3000, () => {
-	//listening on port 5000
-	console.log("Server has started on port 3000");
-});
+const start = async () => {
+	try {
+		app.listen(3000, () => {
+			console.log("Server has started on port 3000");
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+start();
