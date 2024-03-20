@@ -12,7 +12,7 @@ const useClientDetails = (id) => {
 				const clientDetails = await axios.get(
 					`http://localhost:3000/clientdetails/${id}`,
 				);
-				// console.log(clientDetails);
+				console.log("clientDetails",clientDetails);
 				const clientPlans = await axios.get(
 					`http://localhost:3000/previousPlan/${id}`,
 				);

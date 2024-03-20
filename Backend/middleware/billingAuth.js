@@ -17,8 +17,8 @@ const checkSubscription = async (req, res, next) => {
     const today = new Date();
     // console.log("today:", today);
 
-    const createdAt = subscription.createdAt;
-    const numberofmonths = subscription.numberofmonths;
+    const createdAt = subscription?.createdAt;
+    const numberofmonths = subscription?.numberofmonths;
 
     // console.log("ff", createdAt, numberofmonths);
 

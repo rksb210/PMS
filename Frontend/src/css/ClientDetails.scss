@@ -1,28 +1,133 @@
+// .main-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+//   background-color: #dddddd;
+
+//   .client-details-modal {
+//     width: 50%;
+
+//     table .bold-text {
+//       font-weight: bold;
+//     }
+
+//     .client-details-table th,
+// td {
+//   border: 1px solid gray;
+//   text-align: left;
+//   padding: 10px;
+// }
+
+//     .client-details-table {
+//       margin-top: 20px;
+//       border-collapse: collapse;
+//       width: 100%;
+//     }
+//   }
+// }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// .client-details-table {
+//   width: 100%;
+//   border-collapse: collapse;
+//   margin: 25px 0;
+//   font-size: 0.9em;
+//   min-width: 400px;
+//   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+// }
+
+// .client-details-table thead tr {
+//   background-color: #009879;
+//   color: #ffffff;
+//   text-align: left;
+// }
+
+// .client-details-table th,
+// .client-details-table td {
+//   padding: 12px 15px;
+// }
+
+// .client-details-table tbody tr {
+//   border-bottom: 1px solid #dddddd;
+// }
+
+// .client-details-table tbody tr:nth-of-type(even) {
+//   background-color: #f3f3f3;
+// }
+
+// .client-details-table tbody tr:last-of-type {
+//   border-bottom: 2px solid #009879;
+// }
+
+// .client-details-table tbody tr.active-row {
+//   font-weight: bold;
+//   color: #009879;
+// }
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
 .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #dddddd;
-
-  .client-details-modal {
-    width: 50%;
-
-    table .bold-text {
-      font-weight: bold;
-    }
-
-    .client-details-table th,
-td {
-  border: 1px solid gray;
-  text-align: left;
-  padding: 10px;
 }
 
-    .client-details-table {
-      margin-top: 20px;
-      border-collapse: collapse;
-      width: 100%;
-    }
-  }
+.client-details-modal {
+  overflow-x: auto;
+  margin: 20px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+  border-radius: 5px;
+  width: 60%;
+}
+
+.client-details-table {
+  width: 100%; /* Adjusted width */
+  border-collapse: collapse;
+  margin: auto;
+  font-size: 0.9em;
+  min-width: 400px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+
+}
+
+.client-details-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bolder;
+  
+}
+
+.client-details-table th,
+.client-details-table td {
+  padding: 12px 15px;
+}
+
+.client-details-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.client-details-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.client-details-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.client-details-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+.client-details-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.bold-text {
+  font-weight: 600;
 }
