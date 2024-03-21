@@ -12,6 +12,8 @@ const getPreviousPlan = async (req, res) => {
 				"companyname",
 				"companyemailid",
 				"phonenumber",
+				["createdAt", "registration_createdAt"],
+
 			],
 			where: {
 				registration_id: req.params.id,
@@ -47,10 +49,33 @@ const getPreviousPlan = async (req, res) => {
 				companyemailid,
 				phonenumber,
 				registration_id,
+				registration_createdAt,
+
 			} = item;
 			console.log("itemkdjfaskdghsiudhsjkd", item);
-			const expirationDate = calculateExpirationDate(createdAt, numberofmonths);
-			return {
+
+			if (createdAt === null) {
+				const expirationDate = calculateExpirationDate(
+				  registration_createdAt,
+				  1
+				);
+				return {
+				  plan: plan,
+				  planamount: planamount,
+				  companyname: companyname,
+				  companyemailid: companyemailid,
+				  phonenumber: phonenumber,
+				  numberofusers: numberofusers,
+				  numberofmonths: numberofmonths,
+				  registration_id: registration_id,
+				  createdAt: formatDate(registration_createdAt),
+				  expirationDate: formatDate(expirationDate),
+				};
+			  }
+		
+			  const expirationDate = calculateExpirationDate(createdAt, numberofmonths);
+		
+			  return {
 				plan: plan,
 				planamount: planamount,
 				companyname: companyname,
@@ -61,15 +86,15 @@ const getPreviousPlan = async (req, res) => {
 				registration_id: registration_id,
 				createdAt: formatDate(createdAt),
 				expirationDate: formatDate(expirationDate),
-			};
-		});
+			  };
+			});
 		// data.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
         // console.log("uuu:",data);
 
         licenseDetails.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
 
 
-		console.log("liscense details", licenseDetails);
+		console.log("liscense details", licenseDetails[0]);
 		res.json(licenseDetails);
 	} catch (error) {
 		res.status(500).json({ message: "Error retrieving license details" });

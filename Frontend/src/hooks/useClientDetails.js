@@ -13,9 +13,13 @@ const useClientDetails = (id) => {
 					`http://localhost:3000/clientdetails/${id}`,
 				);
 				console.log("clientDetails",clientDetails);
+
 				const clientPlans = await axios.get(
 					`http://localhost:3000/previousPlan/${id}`,
 				);
+				console.log("clientPlans",clientPlans);
+
+
 				setPrevPlans(clientPlans.data);
 				setClient(clientDetails.data[0]);
 			} catch (error) {

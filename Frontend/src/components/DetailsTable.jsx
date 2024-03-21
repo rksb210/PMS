@@ -12,6 +12,7 @@ function DetailsTable() {
   console.log("clientId", clientId);
   const { client, prevPlans } = useClientDetails(clientId);
   console.log("client",client)
+  console.log("prevPlans:",prevPlans)
 
   // const [regData,setRegData] = useState([])
 
