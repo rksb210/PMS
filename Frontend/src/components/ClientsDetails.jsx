@@ -371,16 +371,17 @@ function ClientsDetails() {
 
   const fetchAll = async () => {
     try {
+      setDataSource([]);
       const response = await axios.get("http://localhost:3000/signup");
       setDataSource(response.data.data);
 
-      console.log("iiiiiiiiiiiiiii", response);
+      // console.log("iiiiiiiiiiiiiii", response);
 
       const dataResponse = await axios.get(
         "http://localhost:3000/totalClients"
       );
       setShowData(dataResponse.data);
-      setSelectedCard("Gold");
+      // setSelectedCard("Gold");
       setSelectedCard("TotalClients");
     } catch (error) {
       console.log("error in getting data of registered clients", error);
@@ -388,21 +389,53 @@ function ClientsDetails() {
   };
 
   const handlePlatinum = async () => {
-    const result = await axios.get("http://localhost:3000/totalPlatinum");
-    console.log("resssulllt:", result.data);
-    setDataSource(result.data);
-    setSelectedCard("Platinum");
+    try {
+      // Clear previous data by setting dataSource to an empty array
+      setDataSource([]);
+      setDataSource([]);
+      const result = await axios.get("http://localhost:3000/totalPlatinum");
+      console.log("resssulllt:", result.data);
+
+      setDataSource(result.data);
+      setSelectedCard("Platinum");
+      console.log("datasource:", dataSource);
+    } catch (error) {
+      console.error("Error fetching Gold clients:", error);
+    }
   };
+  // const handleGold = async () => {
+  //   const result = await axios.get("http://localhost:3000/totalGold");
+  //   console.log("resssulllt:", result.data);
+  //   setDataSource(result.data);
+  //   console.log("datasource:",dataSource)
+  //   setSelectedCard("Gold");
+  // };
+
   const handleGold = async () => {
-    const result = await axios.get("http://localhost:3000/totalGold");
-    console.log("resssulllt:", result.data);
-    setDataSource(result.data);
-    setSelectedCard("Gold");
+    try {
+      // Clear previous data by setting dataSource to an empty array
+      setDataSource([]);
+      const result = await axios.get("http://localhost:3000/totalGold");
+      console.log("resssulllt:", result.data);
+      setDataSource(result.data);
+      setSelectedCard("Gold");
+    } catch (error) {
+      console.error("Error fetching Gold clients:", error);
+    }
   };
+
   const handleFree = async () => {
-    const result = await axios.get("http://localhost:3000/totalFree");
-    console.log("resssulllt:", result.data);
-    setDataSource(result.data);
+    try {
+      // Clear previous data by setting dataSource to an empty array
+      setDataSource([]);
+      const result = await axios.get("http://localhost:3000/totalFree");
+      console.log("resssullltFreeeee:", result.data);
+      // setDataSource(result.data);
+      setDataSource(result.data.slice(0, 2)); 
+      setSelectedCard("Free");
+    } catch (error) {
+      console.error("Error fetching Gold clients:", error);
+    }
   };
 
   // Function to update client details
@@ -556,8 +589,8 @@ function ClientsDetails() {
             <Card
               title="Total Clients"
               bordered={false}
-              className={`gradient-background ${
-                selectedCard === "Free" ? "selected" : ""
+              className={`gradient-background-totalClients ${
+                selectedCard === "TotalClients" ? "selected" : ""
               }`}
               onClick={fetchAll}
             >
@@ -568,7 +601,7 @@ function ClientsDetails() {
             <Card
               title="Platinum Clients"
               bordered={false}
-              className={`gradient-background ${
+              className={`gradient-background-platinum ${
                 selectedCard === "Platinum" ? "selected" : ""
               }`}
               onClick={handlePlatinum}
@@ -580,7 +613,7 @@ function ClientsDetails() {
             <Card
               title="Gold Clients"
               bordered={false}
-              className={`gradient-background ${
+              className={`gradient-background-gold ${
                 selectedCard === "Gold" ? "selected" : ""
               }`}
               onClick={handleGold}
@@ -592,7 +625,7 @@ function ClientsDetails() {
             <Card
               title="Free Clients"
               bordered={false}
-              className={`gradient-background ${
+              className={`gradient-background-free ${
                 selectedCard === "Free" ? "selected" : ""
               }`}
               onClick={handleFree}

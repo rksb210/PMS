@@ -27,21 +27,39 @@
 //   }
 // }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// .main-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+//   flex-direction: column;
+// }
+
+// .client-details-modal {
+//   overflow-x: auto;
+//   margin: 20px;
+//   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+//   transition: 0.3s;
+//   border-radius: 5px;
+//   width: 60%;
+// }
 
 // .client-details-table {
-//   width: 100%;
+//   width: 100%; /* Adjusted width */
 //   border-collapse: collapse;
-//   margin: 25px 0;
+//   margin: auto;
 //   font-size: 0.9em;
 //   min-width: 400px;
-//   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+//   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
 // }
 
 // .client-details-table thead tr {
 //   background-color: #009879;
 //   color: #ffffff;
 //   text-align: left;
+//   font-weight: bolder;
 // }
 
 // .client-details-table th,
@@ -66,76 +84,127 @@
 //   color: #009879;
 // }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+// .client-details-table tbody tr:hover {
+//   background-color: #ded7d7;
+// }
+
+// .bold-text {
+//   font-weight: 600;
+// }
+
+// .gradient-background-platinum {
+//   background: linear-gradient(to bottom, #b7e4ec5d, #b6d3c7);
+// }
+// .gradient-background-totalClients {
+//   background: linear-gradient(to bottom, #dd703dc5, #d7cfc82b);
+// }
+// .gradient-background-gold {
+//   background: linear-gradient(to bottom, #dddd06dd, #e0db9b);
+// }
+// .gradient-background-free {
+//   background: linear-gradient(to bottom, #7ae73798, #c8c0b9af);
+// }
+
+// .selected {
+//   border: 1px solid rgba(160, 184, 122, 0.5); /* Change border color */
+//   box-shadow: 0px 0px 10px 0px rgba(202, 33, 33, 0.75); /* Add shadow effect */
+// }
+
+// .button {
+//   margin: 10px;
+//   width: 100px;
+//   background-color: blue;
+//   color: white;
+// }
+
+//////////////////////////////////////////////////////////////////////////////
+///
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
 
 .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #f0f4f8; 
+  flex-direction: column;
 }
 
 .client-details-modal {
   overflow-x: auto;
   margin: 20px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
   border-radius: 5px;
-  width: 60%;
+  width: 80%; 
 }
 
 .client-details-table {
-  width: 100%; /* Adjusted width */
+  width: 100%;
   border-collapse: collapse;
   margin: auto;
-  font-size: 0.9em;
-  min-width: 400px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+  font-family: "Roboto", sans-serif;
+  background-color: #ffffff; 
 }
 
 .client-details-table thead tr {
-  background-color: #009879;
+  background-color: #007bff; 
   color: #ffffff;
   text-align: left;
-  font-weight: bolder;
+  font-weight: 500; 
 }
 
 .client-details-table th,
 .client-details-table td {
-  padding: 12px 15px;
+  padding: 15px;
+  border-bottom: 1px solid #e3e6f0;
 }
 
 .client-details-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-.client-details-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
-
-.client-details-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
-
-.client-details-table tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
+  transition: background-color 0.3s; // Smooth transition for hover effect
 }
 
 .client-details-table tbody tr:hover {
-  background-color: #ded7d7;
+  background-color: #d1deeb; 
 }
 
 .bold-text {
-  font-weight: 600;
+  font-weight: 500; 
 }
 
-.gradient-background {
-  background: linear-gradient(to bottom, #30A8E0, #B6D3C7 );
+.button {
+  margin: 10px;
+  background-color: #1f29d9; 
+  color: white;
+  border: none; 
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1em;
+  cursor: pointer; 
 }
 
-
-.selected {
-  border: 1px solid blue; /* Change border color */
-  box-shadow: 0px 0px 10px 0px rgba(202, 33, 33, 0.75); /* Add shadow effect */
+.button:hover {
+  background-color: #17a2b8; 
 }
+
+.gradient-background-platinum {
+    background: linear-gradient(to bottom, #b7e4ec5d, #b6d3c7);
+  }
+  .gradient-background-totalClients {
+    background: linear-gradient(to bottom, #dd703dc5, #d7cfc82b);
+  }
+  .gradient-background-gold {
+    background: linear-gradient(to bottom, #dddd06dd, #e0db9b);
+  }
+  .gradient-background-free {
+    background: linear-gradient(to bottom, #7ae73798, #c8c0b9af);
+  }
+  
+  .selected {
+    border: 1px solid rgba(211, 64, 84, 0.5); /* Change border color */
+    box-shadow: 0px 0px 10px 0px rgba(202, 33, 33, 0.75); /* Add shadow effect */
+  }
+  
+
+

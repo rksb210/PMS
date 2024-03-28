@@ -106,34 +106,12 @@ catch(error){
 }
 
 
-// const getTotalFreeClients = async (req,res) => {
+// const getTotalFreeClients =  (req,res) => {
 //     try{
-//         const data = await Registration.findAll({
-//             attributes: [
-//               "registration_id",
-//               "companyname",
-//               "companyemailid",
-//               "phonenumber",
-//               "location"
-//             ],
-//             include: [
-//               {
-//                 model: Billing,
-//                 attributes: [
-//                   "plan",
-//                   "numberofmonths",
-//                   "createdAt",
-//                   "planamount",
-//                   "numberofusers",
-//                 ],
-//                 required: false, // Set required to false to perform LEFT JOIN
-//           where: {
-//             registration_id: { [Op.ne]: sequelize.col('Registration.registration_id') }
-//           }
-//               },
-//             ],
-//             raw: true,
-//           });
+//         const data =  `select r.registration_id,r.companyname from ${Registration} r
+//                                left join ${Billing} b 
+//                                 on r.registration_id = b.registration_id 
+//                                  where b.registration_id is null`       
 //           console.log("dataaaaa:", data);
 
 //           res.json(data)
@@ -146,30 +124,39 @@ catch(error){
 // const { Op } = require('sequelize'); // Make sure to import Op from Sequelize
 
 const getTotalFreeClients = async (req, res) => {
-    try {
-      const data = await Registration.findAll({
-        attributes: ['registration_id', 'createdAt'],
-        include: [{
+  try {
+    const data = await Registration.findAll({
+      attributes: [
+        "registration_id",
+        "companyname",
+        "companyemailid",
+        "phonenumber",
+        "location"
+      ],
+      include: [
+        {
           model: Billing,
           attributes: [],
           required: false, // LEFT OUTER JOIN
-          on: {
-            registration_id: { [Op.ne]: sequelize.col('Registration.registration_id')}
-          }
-        }],
-        where: {
-          '$Billing.registration_id$': null // WHERE b.registration_id IS NULL
+          where: {
+            '$Billings.registration_id$': null // WHERE billing.registration_id IS NULL
+          },
         },
-        raw: true
-      });
-      console.log("dataaaaa:", data);
-  
-      res.json(data);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ error: "Internal server error" });
-    }
-  };
+        
+      ],
+      
+      raw: true
+    });
+    console.log("dataaaaa:", data);
+
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+
   
   
   

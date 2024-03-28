@@ -1,30 +1,21 @@
-// import { Card, Col, Row } from "antd";
-// import React from "react";
+
 import { useParams } from "react-router-dom";
 import "../css/ClientDetails.scss";
 import useClientDetails from "../hooks/useClientDetails";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
+import { Button } from "antd";
 
 function DetailsTable() {
   const params = useParams();
   const clientId = params.clientId;
   console.log("clientId", clientId);
   const { client, prevPlans } = useClientDetails(clientId);
-  console.log("client",client)
-  console.log("prevPlans:",prevPlans)
+  console.log("client", client);
+  console.log("prevPlans:", prevPlans);
 
-  // const [regData,setRegData] = useState([])
-
-  // useEffect(() => {
-	// 	fetchRegistrationData();
-	// }, []);
-
-  // const fetchRegistrationData = async () => {
-  //   const registrationData = await axios.get(`http://localhost:3000/freeRegistration/${clientId}`)
-  //   console.log(registrationData)
-  //   // setRegData(registrationData)
-  // }
+  const handlePrint = (e) => {
+    e.preventDefault();
+    window.print();
+  };
   return (
     <div className="main-container">
       <div className="client-details-modal">
@@ -101,6 +92,11 @@ function DetailsTable() {
             </tr>
           </tbody>
         </table>
+      </div>
+      <div>
+        <Button className="button" onClick={handlePrint}>
+          Print
+        </Button>
       </div>
     </div>
   );
