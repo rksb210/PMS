@@ -13,6 +13,7 @@ const LoginPage = () => {
       console.log("rrrrr:", result.data.data.registration_id);
       const registration_id = result.data.data.registration_id;
       localStorage.setItem("registration_id", registration_id);
+
       // alert(result.message)
 
       if (!result.data.status) {

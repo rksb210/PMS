@@ -68,7 +68,14 @@ const BillingForm = () => {
           });
         }
       }
-      navigate("/login");
+      const superAdminId = localStorage.getItem('superAdminId')
+      if(superAdminId){
+        localStorage.removeItem('superAdminId')
+        navigate('/displayallclients')
+      }else{
+        navigate("/login");
+      }
+     
     });
   };
   return (

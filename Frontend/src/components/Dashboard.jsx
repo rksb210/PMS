@@ -10,7 +10,7 @@ function Dashboard() {
 			const response = await axios.get(
 				`http://localhost:3000/clientdashboard/${registration_id}`,
 			);
-			console.log(response.data.msg);
+			console.log("response.data.msg",response.data.msg);
 			if (response.data.msg === "success") {
 				setIsSubscribed(true);
 				localStorage.removeItem("registration_id");

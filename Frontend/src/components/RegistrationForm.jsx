@@ -26,7 +26,7 @@ const RegistrationForm = () => {
 	const onFinish = async (values) => {
 		try {
 			const result = await axios.post("http://localhost:3000/signup", values);
-			// console.log('aaajaaree:',result.data.data.registration_id)
+			// console.log('aaa jaa ree:',result.data.data.registration_id)
 			const registration_id = result.data.data.registration_id;
 
 			if (result.data.status) {

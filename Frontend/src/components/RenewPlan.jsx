@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import Logo from "../assets/logo.png";
+import Logo from '../assets/logo.png'
 import "../css/Renew.css";
 
 function RenewPlan() {
@@ -18,7 +18,7 @@ function RenewPlan() {
 						<Button type="primary" href="/pricing">
 							RENEW SUBSCRIPTION
 						</Button>
-						<Button type="link">no, I'm fine</Button>
+						<Button type="link">no, I am fine</Button>
 					</div>
 				</div>
 				<div className="column-2">
