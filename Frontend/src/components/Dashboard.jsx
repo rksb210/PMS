@@ -11,7 +11,7 @@ function Dashboard() {
 				`http://localhost:3000/clientdashboard/${registration_id}`,
 			);
 			console.log(response.data.msg);
-			if (response.data.msg === "Raju bada hai natkhat!") {
+			if (response.data.msg === "success") {
 				setIsSubscribed(true);
 				localStorage.removeItem("registration_id");
 			} else {
